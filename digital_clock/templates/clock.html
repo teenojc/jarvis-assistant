@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS Digital Clock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/clock.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>⏰ JARVIS Digital Clock</h1>
+            <p class="subtitle">World Time Zone Display</p>
+        </header>
+
+        <section class="control-panel">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="timezone-search">🔍 Search Timezone:</label>
+                    <input 
+                        type="text" 
+                        id="timezone-search" 
+                        placeholder="e.g., London, Tokyo"
+                        class="search-input"
+                    >
+                    <div id="search-results" class="search-results"></div>
+                </div>
+
+                <div class="control-group">
+                    <label for="format-toggle">Format:</label>
+                    <select id="format-toggle" class="format-select">
+                        <option value="24">24-Hour</option>
+                        <option value="12">12-Hour</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <button id="add-selected-btn" class="btn btn-primary">+ Add</button>
+                    <button id="refresh-btn" class="btn btn-secondary">🔄 Refresh</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-display">
+            <div class="utc-clock">
+                <h2>UTC Time</h2>
+                <div class="digital-display">
+                    <div class="time-value" id="utc-time">00:00:00</div>
+                    <div class="date-value" id="utc-date">Loading...</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="timezones-section">
+            <h2>🌍 Tracked Timezones</h2>
+            <div class="timezones-grid" id="timezones-grid">
+                <div class="loading">Loading timezones...</div>
+            </div>
+        </section>
+
+        <section class="converter-section">
+            <h2>🔄 Time Converter</h2>
+            <div class="converter">
+                <div class="converter-group">
+                    <label for="convert-time">Time (HH:MM):</label>
+                    <input type="text" id="convert-time" placeholder="14:30" class="converter-input">
+                </div>
+                <div class="converter-group">
+                    <label for="from-tz">From:</label>
+                    <select id="from-tz" class="converter-select"></select>
+                </div>
+                <div class="converter-group">
+                    <label for="to-tz">To:</label>
+                    <select id="to-tz" class="converter-select"></select>
+                </div>
+                <button id="convert-btn" class="btn btn-primary">Convert</button>
+            </div>
+            <div id="conversion-result" class="conversion-result"></div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 JARVIS Assistant - Digital Clock Module</p>
+            <p id="last-update">Last updated: Never</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/clock.js') }}"></script>
+</body>
+</html>
